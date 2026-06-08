@@ -18,7 +18,7 @@ from rich.prompt import Prompt
 from rich.table import Table
 
 from rex_machine import __version__
-from rex_machine.agents import Provider, run_analysis
+from rex_machine.agents import SUPPORTED_LANGS, Provider, run_analysis
 from rex_machine.config import (
     DEFAULT_PROJECT_CONFIG,
     global_config_path,
@@ -440,6 +440,10 @@ def extract(
     ] = False,
 ) -> None:
     """Extract technical lessons learned (REX) from a code repository."""
+    if lang not in SUPPORTED_LANGS:
+        console.print(f"[bold red]Unsupported language: {lang}. Choose from: {', '.join(sorted(SUPPORTED_LANGS))}[/bold red]")
+        raise typer.Exit(code=1)
+
     log_level = logging.DEBUG if verbose else logging.WARNING
     logging.basicConfig(
         level=log_level,

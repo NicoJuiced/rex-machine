@@ -34,7 +34,7 @@ def load_global() -> dict:
 
 
 def save_global(config: dict) -> None:
-    _CONFIG_DIR.mkdir(parents=True, exist_ok=True)
+    _CONFIG_DIR.mkdir(parents=True, exist_ok=True, mode=0o700)
     _GLOBAL_CONFIG.write_text(json.dumps(config, indent=2), encoding="utf-8")
     try:
         _GLOBAL_CONFIG.chmod(0o600)

@@ -31,6 +31,7 @@ SYNTHESIS_MAX_TOKENS = 8192
 DEFAULT_MAX_TOOL_CALLS = 30
 
 LANG_NAMES = {"en": "English", "fr": "French"}
+SUPPORTED_LANGS = frozenset(LANG_NAMES)
 
 # ─── Prompt templates ────────────────────────────────────────────
 
@@ -75,10 +76,12 @@ def create_client(
     if provider == Provider.FOUNDRY:
         resource = foundry_resource or ""
         base_url = f"https://{resource}.services.ai.azure.com/anthropic/"
+        if not foundry_api_key:
+            raise ValueError("Foundry API key is required")
         return anthropic.AsyncAnthropic(
-            api_key=foundry_api_key or "placeholder",
+            api_key=foundry_api_key,
             base_url=base_url,
-            default_headers={"api-key": foundry_api_key or ""},
+            default_headers={"api-key": foundry_api_key},
         )
     if provider == Provider.BEDROCK:
         return anthropic.AsyncAnthropicBedrock(
@@ -191,7 +194,9 @@ class ToolExecutor:
         """Resolve a path safely within the repo root."""
         cleaned = relative.replace("\\", "/").lstrip("/")
         resolved = (self.root / cleaned).resolve()
-        if not str(resolved).startswith(str(self.root)):
+        try:
+            resolved.relative_to(self.root)
+        except ValueError:
             raise ValueError(f"Path outside repository: {relative}")
         return resolved
 
