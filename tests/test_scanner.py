@@ -4,8 +4,8 @@ from pathlib import Path
 
 import pytest
 
-from tribl.agents import ToolExecutor
-from tribl.scanner import (
+from rex_machine.agents import ToolExecutor
+from rex_machine.scanner import (
     SKIP_DIRS,
     _is_binary_file,
     _is_gitignored,

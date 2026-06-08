@@ -1,4 +1,4 @@
-"""CLI interface for tribl using Typer."""
+"""CLI interface for rex-machine using Typer."""
 
 from __future__ import annotations
 
@@ -17,9 +17,9 @@ from rich.panel import Panel
 from rich.prompt import Prompt
 from rich.table import Table
 
-from tribl import __version__
-from tribl.agents import Provider, run_analysis
-from tribl.config import (
+from rex_machine import __version__
+from rex_machine.agents import Provider, run_analysis
+from rex_machine.config import (
     DEFAULT_PROJECT_CONFIG,
     global_config_path,
     load_global,
@@ -28,12 +28,12 @@ from tribl.config import (
     save_global,
     save_project,
 )
-from tribl.models import RexReport
-from tribl.renderer import render_console, render_json, render_markdown
+from rex_machine.models import RexReport
+from rex_machine.renderer import render_console, render_json, render_markdown
 
 app = typer.Typer(
-    name="tribl",
-    help="Extract tribal knowledge from code repositories.",
+    name="rex",
+    help="Extract lessons learned (REX) from code repositories.",
     add_completion=False,
 )
 
@@ -219,7 +219,7 @@ def _print_global_config(config: dict) -> None:
 def _print_project_config(config: dict, path: Path) -> None:
     if not config:
         return
-    title = f"Project config ({path}/.tribl.json)"
+    title = f"Project config ({path}/.rex-machine.json)"
     table = Table(title=title, show_header=False, border_style="cyan")
     table.add_column("Key", style="bold")
     table.add_column("Value")
@@ -241,7 +241,7 @@ def _mask(key: str) -> str:
 
 def _version_callback(value: bool) -> None:
     if value:
-        console.print(f"tribl v{__version__}")
+        console.print(f"rex v{__version__}")
         raise typer.Exit()
 
 
@@ -258,7 +258,7 @@ def callback(
         ),
     ] = None,
 ) -> None:
-    """tribl - Extract tribal knowledge from code repositories."""
+    """rex - Extract lessons learned from code repositories."""
 
 
 @app.command()
@@ -266,7 +266,7 @@ def configure() -> None:
     """Set up your API provider and credentials (saved globally)."""
     config = load_global()
 
-    console.print(Panel("[bold]tribl configure[/bold]", border_style="blue"))
+    console.print(Panel("[bold]rex configure[/bold]", border_style="blue"))
 
     provider = _choose_provider()
     config["provider"] = provider.value
@@ -321,11 +321,11 @@ def init(
         typer.Argument(help="Project directory.", exists=True, resolve_path=True),
     ] = Path("."),
 ) -> None:
-    """Create a .tribl.json config file in the project directory."""
+    """Create a .rex-machine.json config file in the project directory."""
     existing = load_project(path)
     config = {**DEFAULT_PROJECT_CONFIG, **existing}
 
-    console.print(Panel("[bold]tribl init[/bold]", border_style="cyan"))
+    console.print(Panel("[bold]rex init[/bold]", border_style="cyan"))
 
     config["model"] = Prompt.ask(
         "Model",
@@ -356,7 +356,7 @@ def init(
 def reset() -> None:
     """Reset all saved configuration (credentials + project settings)."""
     global_path = global_config_path()
-    project_path = Path.cwd() / ".tribl.json"
+    project_path = Path.cwd() / ".rex-machine.json"
 
     deleted = False
     if global_path.is_file():
@@ -369,7 +369,7 @@ def reset() -> None:
         deleted = True
 
     if deleted:
-        console.print("\n[dim]Run [bold]tribl analyze[/bold] to reconfigure.[/dim]")
+        console.print("\n[dim]Run [bold]rex extract[/bold] to reconfigure.[/dim]")
     else:
         console.print("[dim]Nothing to reset — no configuration found.[/dim]")
 
@@ -389,8 +389,8 @@ def status(
     if not g and not p:
         console.print(
             "[dim]No configuration found.\n"
-            "Run [bold]tribl configure[/bold] to set up credentials.\n"
-            "Run [bold]tribl init[/bold] to create a project config.[/dim]"
+            "Run [bold]rex configure[/bold] to set up credentials.\n"
+            "Run [bold]rex init[/bold] to create a project config.[/dim]"
         )
         raise typer.Exit()
 
@@ -403,11 +403,11 @@ def status(
 
 
 @app.command()
-def analyze(
+def extract(
     path: Annotated[
         Path,
         typer.Argument(
-            help="Path to the repository to analyze.",
+            help="Path to the repository to extract REX from.",
             exists=True,
             file_okay=False,
             dir_okay=True,
@@ -439,7 +439,7 @@ def analyze(
         typer.Option("--verbose", "-v", help="Enable verbose logging."),
     ] = False,
 ) -> None:
-    """Analyze a code repository and extract technical lessons learned (REX)."""
+    """Extract technical lessons learned (REX) from a code repository."""
     log_level = logging.DEBUG if verbose else logging.WARNING
     logging.basicConfig(
         level=log_level,
@@ -469,7 +469,7 @@ def analyze(
 
     repo_path = str(path)
 
-    console.print(f"\n[bold blue]tribl[/bold blue] v{__version__}")
+    console.print(f"\n[bold blue]rex[/bold blue] v{__version__}")
     console.print(f"Analyzing: [cyan]{repo_path}[/cyan]")
     console.print(f"Model: [cyan]{effective_model}[/cyan]")
     console.print(f"Provider: [cyan]{effective_provider.value}[/cyan]")

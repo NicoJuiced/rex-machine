@@ -1,4 +1,4 @@
-"""Output renderers for tribl analysis reports."""
+"""Output renderers for rex-machine analysis reports."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ from rich.panel import Panel
 from rich.table import Table
 from rich.text import Text
 
-from tribl.models import Confidence, RepoQuality, RexReport
+from rex_machine.models import Confidence, RepoQuality, RexReport
 
 # Confidence level colors
 _CONFIDENCE_COLORS = {
@@ -53,7 +53,7 @@ def render_console(report: RexReport) -> None:
             f"Analyzed: {report.analyzed_at}\n"
             f"Model: {report.model_used}\n"
             f"Files scanned: {report.files_scanned}",
-            title="tribl Analysis Report",
+            title="rex-machine Analysis Report",
             border_style="blue",
         )
     )

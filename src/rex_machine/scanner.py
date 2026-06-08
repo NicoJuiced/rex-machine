@@ -1,4 +1,4 @@
-"""Repository scanner - walks a repo, respects .gitignore, reads key files."""
+"""Repository scanner - walks a repo, respects .gitignore, builds file tree."""
 
 from __future__ import annotations
 

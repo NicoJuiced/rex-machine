@@ -1,4 +1,4 @@
-# tribl
+# rex-machine
 
 A Python CLI tool that extracts technical lessons learned (REX - Retours d'EXperience) from code repositories using the Claude API.
 
@@ -6,10 +6,10 @@ A Python CLI tool that extracts technical lessons learned (REX - Retours d'EXper
 
 **Agentic tool-use pipeline** — each sub-agent navigates the repo autonomously via tool calls (like Claude Code):
 
-1. **Scanner** (`src/tribl/scanner.py`) - Walks the local repo, respects .gitignore, skips binaries, builds a file tree map.
-2. **Sub-agents** (`src/tribl/agents.py`) - Four parallel Claude API calls, each with an autonomous `while stop_reason == "tool_use"` loop. Claude calls `list_files`, `read_file`, `grep` to explore the codebase and decides what to read based on what it finds.
-3. **Synthesis** (`src/tribl/agents.py`) - A final Claude API call merges all sub-agent findings into a structured `RexReport` using tool_use for structured JSON output.
-4. **Renderer** (`src/tribl/renderer.py`) - Outputs the report as Rich console, Markdown (via Jinja2), or JSON.
+1. **Scanner** (`src/rex_machine/scanner.py`) - Walks the local repo, respects .gitignore, skips binaries, builds a file tree map.
+2. **Sub-agents** (`src/rex_machine/agents.py`) - Four parallel Claude API calls, each with an autonomous `while stop_reason == "tool_use"` loop. Claude calls `list_files`, `read_file`, `grep` to explore the codebase and decides what to read based on what it finds.
+3. **Synthesis** (`src/rex_machine/agents.py`) - A final Claude API call merges all sub-agent findings into a structured `RexReport` using tool_use for structured JSON output.
+4. **Renderer** (`src/rex_machine/renderer.py`) - Outputs the report as Rich console, Markdown (via Jinja2), or JSON.
 
 ## Key Design Decisions
 
@@ -26,11 +26,12 @@ A Python CLI tool that extracts technical lessons learned (REX - Retours d'EXper
 # Install in dev mode
 pip install -e ".[dev]"
 
-# Run analysis
-tribl analyze /path/to/repo
-tribl analyze /path/to/repo -o markdown -f report.md
-tribl analyze /path/to/repo -o json -f report.json
-tribl analyze /path/to/repo -m claude-sonnet-4-6 -v
+# Extract REX from a repo
+rex extract /path/to/repo
+rex extract /path/to/repo -o markdown -f report.md
+rex extract /path/to/repo -o json -f report.json
+rex extract /path/to/repo -m claude-sonnet-4-6 -v
+rex extract /path/to/repo --lang fr
 
 # Run tests
 pytest
@@ -47,7 +48,7 @@ ruff format src/ tests/
 ## Project Layout
 
 ```
-src/tribl/
+src/rex_machine/
   __init__.py       - Package version
   models.py         - Pydantic v2 models (RexReport, RexItem, etc.)
   scanner.py        - Local repo file scanner (builds file tree, SKIP_DIRS)

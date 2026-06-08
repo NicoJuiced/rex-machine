@@ -1,4 +1,4 @@
-"""Pydantic v2 models for tribl analysis reports."""
+"""Pydantic v2 models for rex-machine analysis reports."""
 
 from enum import Enum
 

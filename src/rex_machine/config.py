@@ -1,10 +1,10 @@
-"""Configuration management for tribl.
+"""Configuration management for rex-machine.
 
 Config hierarchy (later wins):
-  1. Global config:  ~/.config/tribl/config.json  (credentials, provider)
-  2. Project config: .tribl.json in analyzed repo  (model, output, options)
-  3. Env vars:       ANTHROPIC_API_KEY, etc.       (credentials override)
-  4. CLI flags:      --model, --provider, etc.     (override everything)
+  1. Global config:  ~/.config/rex-machine/config.json  (credentials, provider)
+  2. Project config: .rex-machine.json in analyzed repo  (model, output, options)
+  3. Env vars:       ANTHROPIC_API_KEY, etc.              (credentials override)
+  4. CLI flags:      --model, --provider, etc.            (override everything)
 """
 
 from __future__ import annotations
@@ -12,9 +12,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-_CONFIG_DIR = Path.home() / ".config" / "tribl"
+_CONFIG_DIR = Path.home() / ".config" / "rex-machine"
 _GLOBAL_CONFIG = _CONFIG_DIR / "config.json"
-_PROJECT_FILE = ".tribl.json"
+_PROJECT_FILE = ".rex-machine.json"
 
 DEFAULT_PROJECT_CONFIG = {
     "model": "claude-sonnet-4-6",

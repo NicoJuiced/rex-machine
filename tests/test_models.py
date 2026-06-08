@@ -1,11 +1,11 @@
-"""Tests for tribl Pydantic models."""
+"""Tests for rex-machine Pydantic models."""
 
 import json
 
 import pytest
 from pydantic import ValidationError
 
-from tribl.models import (
+from rex_machine.models import (
     Approach,
     Confidence,
     RepoQuality,

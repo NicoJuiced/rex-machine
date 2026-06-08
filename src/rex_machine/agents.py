@@ -1,4 +1,4 @@
-"""Agentic pipeline for tribl analysis using the Anthropic SDK.
+"""Agentic pipeline for rex-machine using the Anthropic SDK.
 
 Each sub-agent runs an autonomous tool-use loop where Claude navigates
 the repository by calling tools (list_files, read_file, grep), similar
@@ -21,10 +21,10 @@ import anthropic
 import anyio
 from jinja2 import Environment, FileSystemLoader
 
-from tribl.models import RepoQuality, RexReport
-from tribl.scanner import SKIP_DIRS, RepoMap, scan_repo
+from rex_machine.models import RepoQuality, RexReport
+from rex_machine.scanner import SKIP_DIRS, RepoMap, scan_repo
 
-logger = logging.getLogger("tribl")
+logger = logging.getLogger("rex_machine")
 
 SUBAGENT_MAX_TOKENS = 4096
 SYNTHESIS_MAX_TOKENS = 8192
@@ -544,7 +544,7 @@ async def run_analysis(
     max_tool_calls: int = DEFAULT_MAX_TOOL_CALLS,
     lang: str = "en",
 ) -> RexReport:
-    """Run the full tribl analysis pipeline on a repository.
+    """Run the full rex-machine analysis pipeline on a repository.
 
     1. Scan repo for file tree
     2. Run 4 sub-agents in parallel (each with autonomous tool-use loop)
