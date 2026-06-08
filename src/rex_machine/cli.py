@@ -441,7 +441,8 @@ def extract(
 ) -> None:
     """Extract technical lessons learned (REX) from a code repository."""
     if lang not in SUPPORTED_LANGS:
-        console.print(f"[bold red]Unsupported language: {lang}. Choose from: {', '.join(sorted(SUPPORTED_LANGS))}[/bold red]")
+        choices = ", ".join(sorted(SUPPORTED_LANGS))
+        console.print(f"[bold red]Unsupported language: {lang}. Choose from: {choices}[/bold red]")
         raise typer.Exit(code=1)
 
     log_level = logging.DEBUG if verbose else logging.WARNING
