@@ -6,7 +6,7 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/rex-machine?color=%2334D058&logo=pypi&logoColor=white)](https://pypi.org/project/rex-machine/)
 [![Python](https://img.shields.io/pypi/pyversions/rex-machine?logo=python&logoColor=white)](https://pypi.org/project/rex-machine/)
-[![CI](https://img.shields.io/github/actions/workflow/status/NicolasJULIEN/rex-machine/ci.yml?branch=main&logo=github&label=CI)](https://github.com/NicolasJULIEN/rex-machine/actions)
+[![CI](https://img.shields.io/github/actions/workflow/status/NicoJuiced/rex-machine/ci.yml?branch=main&logo=github&label=CI)](https://github.com/NicoJuiced/rex-machine/actions)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg?logo=opensourceinitiative&logoColor=white)](LICENSE)
 [![Anthropic](https://img.shields.io/badge/Powered%20by-Claude-blueviolet?logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIgMkM2LjQ4IDIgMiA2LjQ4IDIgMTJzNC40OCAxMCAxMCAxMCAxMC00LjQ4IDEwLTEwUzE3LjUyIDIgMTIgMnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=)](https://anthropic.com)
 
@@ -361,7 +361,7 @@ rex status
 
 ```bash
 # Clone & install
-git clone https://github.com/NicolasJULIEN/rex-machine.git
+git clone https://github.com/NicoJuiced/rex-machine.git
 cd rex-machine
 pip install -e ".[dev]"
 
@@ -391,7 +391,7 @@ git push --tags
 
 <div align="center">
 
-Built with [Claude](https://anthropic.com) by [@NicolasJULIEN](https://github.com/NicolasJULIEN)
+Built with [Claude](https://anthropic.com) by [@NicoJuiced](https://github.com/NicolasJULIEN)
 
 **rex-machine** — *because the best lessons are already in your code.*
 

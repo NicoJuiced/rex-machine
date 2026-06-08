@@ -5,7 +5,7 @@ Thanks for your interest! Here's how to get started.
 ## Setup
 
 ```bash
-git clone https://github.com/NicolasJULIEN/rex-machine.git
+git clone https://github.com/NicoJuiced/rex-machine.git
 cd rex-machine
 pip install -e ".[dev]"
 ```
@@ -39,4 +39,4 @@ The key thing to understand: rex-machine uses an **agentic tool-use loop** where
 
 ## Reporting bugs
 
-Use [GitHub Issues](https://github.com/NicolasJULIEN/rex-machine/issues) with the bug report template. Include `rex extract --verbose` output when possible.
+Use [GitHub Issues](https://github.com/NicoJuiced/rex-machine/issues) with the bug report template. Include `rex extract --verbose` output when possible.

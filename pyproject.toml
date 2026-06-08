@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = "Apache-2.0"
 authors = [
-    { name = "NicolasJULIEN" },
+    { name = "NicoJuiced" },
 ]
 keywords = ["code-analysis", "rex", "lessons-learned", "claude", "ai"]
 classifiers = [
@@ -42,9 +42,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/NicolasJULIEN/rex-machine"
-Repository = "https://github.com/NicolasJULIEN/rex-machine"
-Issues = "https://github.com/NicolasJULIEN/rex-machine/issues"
+Homepage = "https://github.com/NicoJuiced/rex-machine"
+Repository = "https://github.com/NicoJuiced/rex-machine"
+Issues = "https://github.com/NicoJuiced/rex-machine/issues"
 
 [project.scripts]
 rex = "rex_machine.cli:app"
