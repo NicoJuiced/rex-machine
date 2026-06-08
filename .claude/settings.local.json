@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tribl --version)",
+      "Bash(echo \"EXIT_CODE=$?\")"
+    ]
+  }
+}
