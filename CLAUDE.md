@@ -18,7 +18,7 @@ A Python CLI tool that extracts technical lessons learned (REX - Retours d'EXper
 - Structured output is enforced via the `tool_use` / `tool_choice` pattern (not `response_format`).
 - Parallel sub-agent execution uses `anyio` task groups.
 - Default model: `claude-sonnet-4-6` (cost-effective for analysis).
-- Safety cap: `max_tool_calls` per sub-agent (default 30) prevents runaway loops.
+- Safety cap: `max_tool_calls` per sub-agent (default 50) prevents runaway loops.
 
 ## Commands
 

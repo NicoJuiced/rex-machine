@@ -19,7 +19,7 @@ _PROJECT_FILE = ".rex-machine.json"
 DEFAULT_PROJECT_CONFIG = {
     "model": "claude-sonnet-4-6",
     "output": "console",
-    "max_tool_calls": 30,
+    "max_tool_calls": 50,
 }
 
 

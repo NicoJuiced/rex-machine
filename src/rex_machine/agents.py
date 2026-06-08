@@ -26,9 +26,9 @@ from rex_machine.scanner import SKIP_DIRS, RepoMap, scan_repo
 
 logger = logging.getLogger("rex_machine")
 
-SUBAGENT_MAX_TOKENS = 4096
-SYNTHESIS_MAX_TOKENS = 8192
-DEFAULT_MAX_TOOL_CALLS = 30
+SUBAGENT_MAX_TOKENS = 8192
+SYNTHESIS_MAX_TOKENS = 16384
+DEFAULT_MAX_TOOL_CALLS = 50
 
 LANG_NAMES = {"en": "English", "fr": "French"}
 SUPPORTED_LANGS = frozenset(LANG_NAMES)
