@@ -13,12 +13,21 @@ Look for REX signals in:
 - Cross-platform concerns: does the config handle Windows/Linux/Mac differences?
 - Publishing / deployment: how is the package published? Manual or automated? What triggers a release?
 
-For each finding, cite specific files and line numbers. Configuration choices often reveal hard-won lessons about what went wrong in the past.
-
 FORMAT YOUR OUTPUT AS A LIST OF FINDINGS. For each finding, use this structure:
 
 ### Finding: [short title]
 - **Problem/Context**: What challenge or decision was at stake
 - **What was done**: The approach taken (and alternatives if visible)
-- **Evidence**: Specific file paths and line numbers
+- **Code**: Copy the actual config/code lines that show the pattern. Include the real values, parameters, package names. For example:
+  ```yaml
+  # .github/workflows/deploy.yml:18-25
+  - name: Build container
+    run: |
+      docker build --target production \
+        --build-arg PYTHON_VERSION=3.12 \
+        --cache-from type=gha \
+        -t ${{ env.IMAGE }}:${{ github.sha }} .
+  ```
 - **Lesson**: The takeaway for other teams
+
+Always include real config/code from files you read — not paraphrases. The reader should see the exact commands, package versions, and settings used.

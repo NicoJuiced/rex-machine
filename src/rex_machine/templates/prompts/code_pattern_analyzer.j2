@@ -13,12 +13,21 @@ Look for REX signals in:
 - Defensive programming: path validation, input sanitization, safety caps, timeout handling
 - Abstraction levels: is the code over-engineered or under-abstracted? Where was complexity invested?
 
-For each finding, cite specific files and line numbers. Distinguish between "this IS the pattern used" vs "this COULD be improved" — both can be REX.
-
 FORMAT YOUR OUTPUT AS A LIST OF FINDINGS. For each finding, use this structure:
 
 ### Finding: [short title]
 - **Problem/Context**: What challenge or decision was at stake
 - **What was done**: The approach taken (and alternatives if visible, including things that didn't work)
-- **Evidence**: Specific file paths and line numbers
+- **Code**: Copy the actual code lines that show the pattern. Include imports, function signatures, key parameters, the specific arguments used. For example:
+  ```python
+  # src/worker/main.py:160-175
+  async def _progress_callback(job_id: str, progress: float) -> bool:
+      async with async_session_maker() as session:
+          job = await session.get(OptimizationJob, job_id)
+          if job.status == JobStatus.CANCELLED:
+              return True  # signal optimizer to stop
+      return False
+  ```
 - **Lesson**: The takeaway for other teams
+
+Always include real code from files you read — not paraphrases, not "see line 42". The reader should understand the pattern, the function names, the parameters, and the packages used without opening the repo.

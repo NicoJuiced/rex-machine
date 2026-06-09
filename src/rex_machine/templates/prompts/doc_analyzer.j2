@@ -12,12 +12,19 @@ Look for REX signals in:
 - API documentation: is the external API documented separately from implementation?
 - CHANGELOG/versioning: is there a changelog? Is it maintained?
 
-For each finding, cite specific files and line numbers. A gap in documentation is just as valuable as good documentation — both carry lessons.
-
 FORMAT YOUR OUTPUT AS A LIST OF FINDINGS. For each finding, use this structure:
 
 ### Finding: [short title]
 - **Problem/Context**: What challenge or decision was at stake
 - **What was done**: The approach taken (and alternatives if visible)
-- **Evidence**: Specific file paths and line numbers
+- **Code**: Copy the actual code or documentation lines that illustrate the finding. For example:
+  ```python
+  # src/core/optimizer.py:45-48
+  # We use DBSCAN instead of K-means here because the number of
+  # annotation clusters is unknown and annotations can have
+  # irregular shapes. eps=15 tuned on the validation set.
+  clusters = DBSCAN(eps=15, min_samples=3).fit_predict(coords)
+  ```
 - **Lesson**: The takeaway for other teams
+
+Always include real code or documentation excerpts — not paraphrases. The reader should see exactly what the codebase does.

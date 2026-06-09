@@ -2,8 +2,6 @@
 
 **Your codebase has lessons no one wrote down. This finds them.**
 
-[![Star History Chart](https://api.star-history.com/svg?repos=NicoJuiced/rex-machine&type=Date)](https://star-history.com/#NicoJuiced/rex-machine&Date)
-
 rex-machine scans any code repository and extracts structured technical lessons learned — what problems the team faced, what they tried, what worked. Claude navigates your repo autonomously (reading files, grepping, following imports) and produces a grounded report, not a vague summary.
 
 Works on any language, any framework, any repo size.
@@ -100,3 +98,7 @@ rex status        # show current config
 ## License
 
 [Apache 2.0](LICENSE)
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=NicoJuiced/rex-machine&type=Date)](https://star-history.com/#NicoJuiced/rex-machine&Date)
