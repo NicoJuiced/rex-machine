@@ -26,7 +26,7 @@ FORMAT YOUR OUTPUT AS A LIST OF FINDINGS. For each finding, use this structure:
       docker build --target production \
         --build-arg PYTHON_VERSION=3.12 \
         --cache-from type=gha \
-        -t ${{ env.IMAGE }}:${{ github.sha }} .
+        -t {% raw %}${{ env.IMAGE }}:${{ github.sha }}{% endraw %} .
   ```
 - **Lesson**: The takeaway for other teams
 
